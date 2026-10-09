@@ -17,7 +17,7 @@ function Bouncy({ text, className }: { text: string; className?: string }) {
           aria-hidden
           className="inline-block"
           initial={{ y: "40%", opacity: 0, filter: "blur(14px)" }}
-          animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
+          animate={{ y: 0, opacity: 1, filter: "blur(0px)", transitionEnd: { filter: "none" } }}
           transition={{ delay: 0.15 + i * 0.035, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           whileHover={{ y: -14, rotate: i % 2 ? 6 : -6, transition: { type: "spring", stiffness: 400, damping: 8 } }}
         >
@@ -41,7 +41,7 @@ export function Hero() {
       <motion.div style={{ y: textY }} className="order-2 lg:order-1">
         <motion.p
           initial={{ opacity: 0, y: 10, filter: "blur(8px)" }}
-          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)", transitionEnd: { filter: "none" } }}
           className="mb-4 font-mono text-sm uppercase tracking-[0.3em] text-muted"
         >
           {tr(t.hero.hello)}
@@ -59,7 +59,7 @@ export function Hero() {
 
         <motion.div
           initial={{ opacity: 0, y: 16, filter: "blur(10px)" }}
-          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)", transitionEnd: { filter: "none" } }}
           transition={{ delay: 0.6, duration: 0.8 }}
         >
           <p className="mt-6 font-display text-2xl font-semibold text-muted sm:text-3xl">{tr(t.hero.role)}</p>
@@ -97,7 +97,7 @@ export function Hero() {
       <motion.div
         style={{ y: avatarY }}
         initial={{ opacity: 0, scale: 0.7, filter: "blur(24px)" }}
-        animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+        animate={{ opacity: 1, scale: 1, filter: "blur(0px)", transitionEnd: { filter: "none" } }}
         transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
         className="relative order-1 mx-auto w-full max-w-[300px] sm:max-w-[380px] lg:order-2 lg:max-w-[480px]"
       >

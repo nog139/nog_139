@@ -25,7 +25,9 @@ export function Statement() {
 
   return (
     <section className="relative mx-auto max-w-5xl px-4 py-32 text-center sm:px-8 sm:py-48">
-      <div aria-hidden className="fx-aura absolute left-1/2 top-1/2 size-[50vmin] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-[0.12] blur-[100px]" />
+      <div aria-hidden className="absolute left-1/2 top-1/2 size-[80vmin] -translate-x-1/2 -translate-y-1/2 opacity-20">
+        <div className="fx-glow size-full" />
+      </div>
       <p ref={ref} className="relative font-display text-[clamp(2rem,6vw,4.75rem)] font-bold leading-[1.05] tracking-tighter">
         {words.map((w, i) => (
           <Word key={i} word={w} glow={i >= glowStart} progress={scrollYProgress} range={[i / words.length, (i + 1) / words.length]} />

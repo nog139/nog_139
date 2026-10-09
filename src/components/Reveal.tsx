@@ -6,7 +6,7 @@ export function Reveal({ children, delay = 0, className }: { children: ReactNode
     <motion.div
       className={className}
       initial={{ opacity: 0, y: 28, filter: "blur(10px)" }}
-      whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+      whileInView={{ opacity: 1, y: 0, filter: "blur(0px)", transitionEnd: { filter: "none" } }}
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.9, delay, ease: [0.22, 1, 0.36, 1] }}
     >
@@ -36,7 +36,7 @@ export function Words({ text, className, delay = 0, after }: { text: string; cla
           key={i}
           className="inline-block"
           initial={{ opacity: 0, y: 14, filter: "blur(8px)" }}
-          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)", transitionEnd: { filter: "none" } }}
           viewport={{ once: true }}
           transition={{ delay: delay + i * 0.06, duration: 0.6 }}
         >

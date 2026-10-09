@@ -49,7 +49,7 @@ export function Pattern139() {
           WebkitMaskComposite: "source-in",
         }}
       >
-        <div className="fx-aura absolute inset-[-50%] opacity-80" />
+        <div className="fx-mesh absolute inset-0 opacity-80" />
       </motion.div>
     </div>
   );
@@ -104,20 +104,22 @@ export function Psalm139() {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0, transition: { duration: 0.4 } }}
           onClick={() => setOpen(false)}
-          className="fixed inset-0 z-[70] grid cursor-pointer place-items-center overflow-hidden bg-background/90 px-6 backdrop-blur-xl"
+          className="fixed inset-0 z-[70] grid cursor-pointer place-items-center overflow-hidden bg-background/[0.97] px-6 sm:bg-background/85 sm:backdrop-blur-xl"
         >
           <motion.div
             aria-hidden
             initial={{ scale: 0.4, opacity: 0 }}
-            animate={{ scale: 1, opacity: 0.35 }}
+            animate={{ scale: 1, opacity: 0.5 }}
             transition={{ duration: 1.6, ease: [0.22, 1, 0.36, 1] }}
-            className="fx-aura absolute size-[70vmin] rounded-full blur-[90px]"
-          />
+            className="absolute size-[110vmin]"
+          >
+            <div className="fx-glow size-full" />
+          </motion.div>
 
           <div className="relative max-w-3xl text-center">
             <motion.p
               initial={{ y: 40, opacity: 0, filter: "blur(12px)" }}
-              animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
+              animate={{ y: 0, opacity: 1, filter: "blur(0px)", transitionEnd: { filter: "none" } }}
               transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
               className="fx-text font-display text-[clamp(6rem,24vw,14rem)] font-extrabold leading-none tracking-tighter"
             >
@@ -129,7 +131,7 @@ export function Psalm139() {
                 <motion.p
                   key={line}
                   initial={{ opacity: 0, y: 12, filter: "blur(8px)" }}
-                  animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                  animate={{ opacity: 1, y: 0, filter: "blur(0px)", transitionEnd: { filter: "none" } }}
                   transition={{ delay: 0.6 + i * 0.45, duration: 0.7 }}
                   className={i === lines.length - 1 ? "fx-text mt-2" : i < 2 ? "text-muted" : ""}
                 >

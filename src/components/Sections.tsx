@@ -114,7 +114,7 @@ export function Experience() {
                 >
                   {job.company}
                   <Tabs.Indicator className="rounded-none bg-foreground/5 shadow-none">
-                    <span className="fx-aura absolute inset-x-0 bottom-0 h-0.5 md:inset-y-0 md:left-0 md:right-auto md:h-auto md:w-0.5" />
+                    <span className="fx-line absolute inset-x-0 bottom-0 h-0.5 md:inset-y-0 md:left-0 md:right-auto md:h-auto md:w-0.5" />
                   </Tabs.Indicator>
                 </Tabs.Tab>
               ))}
@@ -197,14 +197,13 @@ function TiltCard({ project, index }: { project: (typeof projects)[number]; inde
         }}
         className="group relative h-full rounded-[min(32px,var(--radius-3xl))]"
       >
-        <div aria-hidden className={`fx-aura absolute -inset-[1.5px] rounded-[inherit] transition-opacity duration-500 ${hover ? "opacity-100" : "opacity-0"}`} />
-        <div aria-hidden className={`fx-aura absolute -inset-3 rounded-[inherit] blur-2xl transition-opacity duration-700 ${hover ? "opacity-30" : "opacity-0"}`} />
-        <Card className="relative h-full overflow-hidden p-6 sm:p-8">
+        <div aria-hidden className={`fx-line absolute -inset-[1.5px] rounded-[inherit] transition-opacity duration-500 ${hover ? "opacity-100" : "opacity-0"}`} />
+        <Card className="safari-clip relative h-full overflow-hidden p-6 sm:p-8">
           <motion.div aria-hidden className="pointer-events-none absolute inset-0" style={{ background: glow }} />
           <div
             aria-hidden
-            className="absolute -right-10 -top-10 size-40 rounded-full opacity-30 blur-2xl transition-transform duration-500 group-hover:scale-150"
-            style={{ background: `oklch(0.75 0.2 ${project.hue})` }}
+            className="absolute -right-24 -top-24 size-72 opacity-60 transition-transform duration-500 group-hover:scale-150"
+            style={{ background: `radial-gradient(closest-side, oklch(0.75 0.2 ${project.hue} / 0.55), transparent)` }}
           />
           <Card.Header className="relative gap-2">
             <span className="font-mono text-xs uppercase tracking-widest text-accent">{tr(project.tag)}</span>
@@ -261,7 +260,9 @@ export function Contact() {
 
   return (
     <section id="contact" className="relative mx-auto max-w-4xl scroll-mt-24 px-4 py-24 text-center sm:px-8 sm:py-40">
-      <div aria-hidden className="fx-aura absolute left-1/2 top-1/3 size-[60vmin] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-[0.14] blur-[110px]" />
+      <div aria-hidden className="absolute left-1/2 top-1/3 size-[90vmin] -translate-x-1/2 -translate-y-1/2 opacity-20">
+        <div className="fx-glow size-full" />
+      </div>
       <div className="relative">
         <p className="font-mono text-xs uppercase tracking-[0.3em] text-muted">
           <span className="fx-text">04</span> — {tr(t.nav.contact)}

@@ -54,15 +54,9 @@
   --fx-alpha: 0.1;
 }
 
-@property --fx-angle {
-  syntax: "<angle>";
-  inherits: false;
-  initial-value: 0deg;
-}
-
-@keyframes fx-spin {
+@keyframes fx-rotate {
   to {
-    --fx-angle: 360deg;
+    transform: rotate(360deg);
   }
 }
 
@@ -89,17 +83,60 @@
   animation: fx-pan 6s linear infinite;
 }
 
-@utility fx-aura {
-  background: conic-gradient(
-    from var(--fx-angle),
-    oklch(0.72 0.2 20),
-    oklch(0.8 0.17 90),
-    oklch(0.75 0.18 160),
-    oklch(0.68 0.2 260),
-    oklch(0.7 0.22 330),
-    oklch(0.72 0.2 20)
+@utility fx-line {
+  background: linear-gradient(
+    90deg,
+    oklch(0.78 0.18 20),
+    oklch(0.82 0.17 90),
+    oklch(0.78 0.18 160),
+    oklch(0.72 0.18 260),
+    oklch(0.74 0.2 330),
+    oklch(0.78 0.18 20)
   );
-  animation: fx-spin 12s linear infinite;
+  background-size: 200% 100%;
+  animation: fx-pan 6s linear infinite;
+}
+
+@utility fx-fill {
+  background:
+    radial-gradient(circle at 22% 28%, oklch(0.74 0.2 20), transparent 46%),
+    radial-gradient(circle at 78% 24%, oklch(0.84 0.16 90), transparent 46%),
+    radial-gradient(circle at 80% 76%, oklch(0.66 0.2 260), transparent 48%),
+    radial-gradient(circle at 24% 78%, oklch(0.76 0.17 165), transparent 48%),
+    radial-gradient(circle at 50% 50%, oklch(0.72 0.21 330), transparent 60%),
+    oklch(0.7 0.16 300);
+  animation: fx-rotate 14s linear infinite;
+  will-change: transform;
+}
+
+@utility fx-glow {
+  background:
+    radial-gradient(circle at 30% 30%, oklch(0.72 0.2 20 / 0.9), transparent 50%),
+    radial-gradient(circle at 70% 28%, oklch(0.82 0.17 90 / 0.85), transparent 50%),
+    radial-gradient(circle at 74% 72%, oklch(0.66 0.2 260 / 0.9), transparent 50%),
+    radial-gradient(circle at 28% 74%, oklch(0.76 0.17 165 / 0.85), transparent 50%);
+  -webkit-mask-image: radial-gradient(closest-side, #000 20%, transparent 100%);
+  mask-image: radial-gradient(closest-side, #000 20%, transparent 100%);
+  border-radius: 50%;
+  animation: fx-rotate 16s linear infinite;
+  will-change: transform;
+}
+
+@utility fx-mesh {
+  background: linear-gradient(
+    120deg,
+    oklch(0.72 0.2 20),
+    oklch(0.82 0.17 90),
+    oklch(0.76 0.17 165),
+    oklch(0.68 0.2 260),
+    oklch(0.72 0.21 330)
+  );
+}
+
+@utility safari-clip {
+  isolation: isolate;
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+  mask-image: radial-gradient(white, black);
 }
 
 html {
@@ -169,7 +206,9 @@ body {
   .animate-marquee,
   .animate-blob,
   .fx-text,
-  .fx-aura {
+  .fx-line,
+  .fx-fill,
+  .fx-glow {
     animation: none;
   }
 }

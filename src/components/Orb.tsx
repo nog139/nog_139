@@ -156,17 +156,19 @@ export function Orb({ className }: { className?: string }) {
     <div ref={ref} className={`relative aspect-square ${className ?? ""}`}>
       <motion.div
         aria-hidden
-        className="fx-aura absolute inset-[8%] rounded-full blur-3xl"
-        animate={{ opacity: mood === "happy" ? 0.75 : 0.45, scale: mood === "happy" ? 1.12 : 1 }}
+        className="absolute inset-[-4%]"
+        animate={{ opacity: mood === "happy" ? 0.9 : 0.6, scale: mood === "happy" ? 1.1 : 1 }}
         transition={{ duration: 0.6 }}
-      />
+      >
+        <div className="fx-glow size-full" />
+      </motion.div>
 
       <AnimatePresence>
         {bubble && (
           <motion.div
             key={bubble}
             initial={{ opacity: 0, y: 10, scale: 0.8, filter: "blur(6px)" }}
-            animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
+            animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)", transitionEnd: { filter: "none" } }}
             exit={{ opacity: 0, y: -6, scale: 0.9, filter: "blur(6px)" }}
             className="absolute right-[2%] top-[4%] z-10 rounded-2xl rounded-bl-sm border border-separator bg-background/70 px-4 py-2 font-display text-sm font-semibold shadow-lg backdrop-blur-md"
             role="status"
@@ -185,9 +187,8 @@ export function Orb({ className }: { className?: string }) {
         animate={{ scale: mood === "surprised" ? 1.05 : 1 }}
       >
         <motion.div ref={scope} className="relative size-full" style={{ rotateX, rotateY }}>
-          <div className="animate-blob absolute inset-0 overflow-hidden shadow-[inset_0_-24px_60px_rgb(0_0_0/0.35)]">
-            <div className="fx-aura absolute inset-[-35%] blur-2xl" />
-            <div className="fx-aura absolute inset-[20%] rotate-180 rounded-full opacity-60 mix-blend-overlay blur-xl" />
+          <div className="animate-blob safari-clip absolute inset-0 overflow-hidden">
+            <div className="fx-fill absolute inset-[-25%]" />
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgb(0_0_0/0.35),transparent_60%)]" />
             <motion.div className="absolute inset-0" style={{ background: shine }} />
             <motion.svg viewBox="0 0 100 100" className="absolute inset-0 size-full" style={{ x: faceX, y: faceY }} aria-hidden>
